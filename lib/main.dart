@@ -30,8 +30,40 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-     debugShowCheckedModeBanner: true,
-     home:ElevatedButton(onPressed: (){}, child: Text('Tombol OK', style: TextStyle(fontSize: 50),),style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.red)),),
+     debugShowCheckedModeBanner: false,
+     home: Scaffold(
+       backgroundColor: Colors.brown,
+       appBar: AppBar(
+         title: Text('Aplikasi SIB6B'),
+         centerTitle: true,
+         backgroundColor: Colors.white,
+         foregroundColor: Colors.brown,
+         leading: Icon(Icons.account_circle, color: Colors.blueGrey, size: 35,),
+         actions: [
+           IconButton(onPressed: (){}, icon: Icon(Icons.search, size: 30, color: Colors.blueGrey,),),
+           Padding(padding: EdgeInsets.all(3)),
+           IconButton(onPressed: (){}, icon: Icon(Icons.more_vert, size: 30, color: Colors.blueGrey,),),
+    ],
+    ),
+    bottomNavigationBar: NavigationBar(
+    indicatorColor: Colors.grey,
+    destinations: const <Widget>[
+    NavigationDestination(
+    selectedIcon: Icon(Icons.home),
+    icon: Icon(Icons.home_outlined),
+    label: 'Home',
+    ),
+    NavigationDestination(
+    icon: Badge(child: Icon(Icons.notifications_sharp)),
+    label: 'Notifications',
+    ),
+    NavigationDestination(
+    icon: Badge(label: Text('2'), child: Icon(Icons.messenger_sharp)),
+    label: 'Messages',
+    ),
+    ],
+    ),
+     )
     );
   }
 }
