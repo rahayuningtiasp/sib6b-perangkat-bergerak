@@ -28,42 +28,62 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: .fromSeed(seedColor: Colors.redAccent),
+    ),
+    debugShowCheckedModeBanner: false,
+    home: Beranda(),
+    );
+  }
+}
+
+class Project2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+    );
+  }
+}
+
+
+class Project1 extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        title: Text('Apps ku'),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black87,
+        leading: Icon(Icons.account_circle, color: Colors.black87, size: 35,),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.search, size: 25,),),
+          Padding(padding: EdgeInsets.all(3)),
+          IconButton(onPressed: (){}, icon: Icon(Icons.more_vert, size: 25,),),
+        ],
       ),
-     debugShowCheckedModeBanner: false,
-     home: Scaffold(
-       backgroundColor: Colors.brown,
-       appBar: AppBar(
-         title: Text('Aplikasi SIB6B'),
-         centerTitle: true,
-         backgroundColor: Colors.white,
-         foregroundColor: Colors.brown,
-         leading: Icon(Icons.account_circle, color: Colors.blueGrey, size: 35,),
-         actions: [
-           IconButton(onPressed: (){}, icon: Icon(Icons.search, size: 30, color: Colors.blueGrey,),),
-           Padding(padding: EdgeInsets.all(3)),
-           IconButton(onPressed: (){}, icon: Icon(Icons.more_vert, size: 30, color: Colors.blueGrey,),),
-    ],
-    ),
-    bottomNavigationBar: NavigationBar(
-    indicatorColor: Colors.grey,
-    destinations: const <Widget>[
-    NavigationDestination(
-    selectedIcon: Icon(Icons.home),
-    icon: Icon(Icons.home_outlined),
-    label: 'Home',
-    ),
-    NavigationDestination(
-    icon: Badge(child: Icon(Icons.notifications_sharp)),
-    label: 'Notifications',
-    ),
-    NavigationDestination(
-    icon: Badge(label: Text('2'), child: Icon(Icons.messenger_sharp)),
-    label: 'Messages',
-    ),
-    ],
-    ),
-     )
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.white,
+        indicatorColor: Colors.blueGrey,
+        labelTextStyle: WidgetStatePropertyAll(TextStyle(color: Colors.black87)),
+        destinations: const <Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home, color: Colors.black87,),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Badge(child: Icon(Icons.notifications_sharp, color: Colors.black87,)),
+            label: 'Notifications',
+          ),
+          NavigationDestination(
+            icon: Badge(label: Text('2'), child: Icon(Icons.messenger_sharp, color: Colors.black87,)),
+            label: 'Messages',
+          ),
+        ],
+      ),
     );
   }
 }
@@ -113,7 +133,10 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
@@ -140,7 +163,10 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headlineMedium,
             ),
           ],
         ),
@@ -149,6 +175,78 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class Beranda extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Colors.pinkAccent,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Project1(),));
+            }, child: Text('Project 1', style: TextStyle(color: Colors.white),), style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blueGrey)),),
+            Padding(padding: EdgeInsets.all(10)),
+            ElevatedButton(onPressed: (){}, child: Text('Project 2')),
+            Padding(padding: EdgeInsets.all(10)),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => About(),));
+            },child: Text('About', style: TextStyle(color: Colors.white),), style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.blueGrey)),)
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+class About extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Data Diri"),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Table(
+          border: TableBorder.all(),
+          children: [
+
+            TableRow(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text("Nama"),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text("Tyas"),
+                ),
+              ],
+            ),
+
+            TableRow(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text("NIM"),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text("123456"),
+                ),
+              ],
+            ),
+
+          ],
+        ),
       ),
     );
   }
